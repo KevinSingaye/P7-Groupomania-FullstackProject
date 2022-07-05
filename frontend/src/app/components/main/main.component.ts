@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
@@ -11,10 +12,9 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 export class MainComponent implements OnInit {
  imagePath : string='';
 
-
- 
-
-  constructor(private router:Router) { }
+  constructor(private router:Router, public AuthService:AuthService) { 
+  
+  }
 
   ngOnInit(): void {
     
@@ -23,6 +23,9 @@ export class MainComponent implements OnInit {
 this.router.navigate(['login']);
     }
     this.imagePath= sessionStorage.getItem('photo')??'';
+    
+
   }
 
+  
 }
