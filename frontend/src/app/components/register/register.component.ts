@@ -42,11 +42,13 @@ export class RegisterComponent implements OnInit {
 
 
   onRegister(): void {
+    
     let body = new FormData();
     body.append('email', this.identifiant);
     body.append('password', this.motDePasse);
     body.append('nom', this.nomsPrenoms);
     body.append('file', this.photo);
+    body.append('moderateur', 'false');
 
     this.service.register(body).subscribe((result) => {
       this.router.navigate(['login'])

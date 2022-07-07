@@ -13,6 +13,7 @@ exports.signup = (req, res, next) => {
                 password: hash,
                 nom: req.body.nom,
                 photo: image ? `${req.protocol}://${req.get("host")}/images/${image.filename}` : null,
+                moderateur: req.body.moderateur
 
             });
             utilisateur.save()
@@ -55,7 +56,10 @@ exports.login = (req, res, next) => {
                             }
                         ),
                         photo: utilisateur.photo,
-                        moderateur: utilisateur.moderateur
+                        moderateur: utilisateur.moderateur,
+                        nom: utilisateur.nom,
+                        email: utilisateur.email
+
                     });
                 })
                 .catch(error => res.status(500).json({

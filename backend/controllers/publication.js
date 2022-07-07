@@ -2,12 +2,19 @@ const Publication = require('../models/publication.js');
 const fs = require('fs');
 
 exports.createPublication = (req, res, next) => {
-    const publicationObject = JSON.parse(req.body.publication);
-    delete publicationObject._id;
+    console.log(req.body);
+    let image = req.files ? req.files[0] : undefined;
     const publication = new Publication({
-        ...publicationObject,
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+        texte: req.body.texte,
+        userId: req.body.userId,
+        likes: 0,
+        imageUrl: image ? `${req.protocol}://${req.get("host")}/images/${image.filename}` : null,
+        dislikes: 0,
+        usersLiked: [],
+        usersDisliked: []
+
     });
+
     publication.save()
         .then(() => res.status(201).json({ message: 'Publication enregistrée !' }))
         .catch(error => res.status(400).json({ error }));

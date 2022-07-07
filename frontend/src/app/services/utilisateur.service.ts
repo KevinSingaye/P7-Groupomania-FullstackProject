@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { LoginComponent } from '../components/login/login.component';
-
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,7 +11,7 @@ export class UtilisateurService {
 
   path = 'http://localhost:3000/api/auth'
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private cookieService:CookieService) {
 
   }
   login(identifiant: string, password: string): Observable<any> {
@@ -22,6 +22,13 @@ export class UtilisateurService {
   register(body: FormData): Observable<any> {
     return this.http.post(this.path + '/signup', body);
 
+
   }
+  
+logoutUser() {
+  sessionStorage.clear()
+  this.router.navigate(['/login'])
+  this.cookieService.set('token','')
+}
 
 }

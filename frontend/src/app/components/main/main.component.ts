@@ -1,7 +1,8 @@
-import { AuthService } from './../../services/auth.service';
+import { PublicationService } from './../../services/publication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
+
 
 
 @Component({
@@ -10,9 +11,9 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
- imagePath : string='';
+ 
 
-  constructor(private router:Router, public AuthService:AuthService) { 
+  constructor(private router:Router, public utilisateurService:UtilisateurService, public publicationService:PublicationService) { 
   
   }
 
@@ -22,8 +23,6 @@ export class MainComponent implements OnInit {
     if (!userId) {
 this.router.navigate(['login']);
     }
-    this.imagePath= sessionStorage.getItem('photo')??'';
-    
 
   }
 

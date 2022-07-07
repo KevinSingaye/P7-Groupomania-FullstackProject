@@ -8,13 +8,19 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { EditComponent } from './components/publication/edit/edit.component';
+import { HeaderComponent } from './components/header/header.component';
+import { DisplayComponent } from './components/publication/display/display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EditComponent,
+    HeaderComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,

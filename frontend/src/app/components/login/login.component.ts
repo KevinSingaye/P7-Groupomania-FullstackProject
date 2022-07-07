@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   onLogin(): void {
     this.service.login(this.identifiant, this.motDePasse).subscribe((result) => {
       sessionStorage.setItem('userId', result.userId)
-      
+      sessionStorage.setItem('nom', result.nom)
+      sessionStorage.setItem('email',result.email)
       sessionStorage.setItem('moderateur', result.moderateur)
       
       sessionStorage.setItem('photo', result.photo)
