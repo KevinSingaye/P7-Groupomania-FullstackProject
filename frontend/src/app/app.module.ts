@@ -12,6 +12,7 @@ import { EditComponent } from './components/publication/edit/edit.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DisplayComponent } from './components/publication/display/display.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,8 @@ import { DisplayComponent } from './components/publication/display/display.compo
     RegisterComponent,
     EditComponent,
     HeaderComponent,
-    DisplayComponent
+    DisplayComponent,
+    
   ],
   imports: [
     BrowserModule,

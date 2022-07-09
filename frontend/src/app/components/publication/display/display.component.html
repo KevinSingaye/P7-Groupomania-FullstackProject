@@ -1,1 +1,28 @@
-<p>display works!</p>
+<div class="container-publications">
+
+    <div class="profil">
+        <div class="image">
+            <img src="./../../../assets/images/144756_OxAbLYGQpYTlhs5c_938336.jpg" alt="Photo commentaires" />
+        </div>
+        <div class="nom">
+            <span>Melanie</span>
+            <span>Dupontel</span>
+        </div>
+        <br> <br>
+
+    </div>
+
+    <div class="comment">
+        {{post.texte}}
+    </div>
+    <img [src]="post.imageUrl" />
+    <div class="reaction-container">
+        <div class="btn">
+            <i class="uil uil-thumbs-up"></i>
+            <button id="modifier-btn"> Modifier</button>
+            <button id="supprimer-btn"> Supprimer</button>
+        </div>
+    </div>
+
+
+</div>

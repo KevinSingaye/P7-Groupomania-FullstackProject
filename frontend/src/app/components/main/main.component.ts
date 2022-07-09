@@ -1,7 +1,9 @@
+
 import { PublicationService } from './../../services/publication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
+
 
 
 
@@ -12,6 +14,8 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 })
 export class MainComponent implements OnInit {
  
+  posts : Array<any> = [];
+ 
 
   constructor(private router:Router, public utilisateurService:UtilisateurService, public publicationService:PublicationService) { 
   
@@ -19,10 +23,19 @@ export class MainComponent implements OnInit {
 
   ngOnInit(): void {
     
+    
     const userId= sessionStorage.getItem('userId');
     if (!userId) {
 this.router.navigate(['login']);
     }
+
+     this.publicationService.findAll().subscribe((result) => {
+     this.posts= result
+    }
+      , (error) => {
+        console.log('error', error);
+      }
+    ) 
 
   }
 

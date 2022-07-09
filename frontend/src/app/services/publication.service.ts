@@ -14,7 +14,11 @@ export class PublicationService {
   constructor(private httpclient:HttpClient, private cookieService: CookieService) { }
 
   findAll():Observable<any> {
-    return this.httpclient.get(this.path)
+    let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+    return this.httpclient.get(this.path, {headers:header})
+    
   }
 
 
