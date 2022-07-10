@@ -1,8 +1,6 @@
 import { Observable } from 'rxjs';
 import { PublicationService } from './../../../services/publication.service';
-import { Component, OnInit } from '@angular/core';
-
-import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
+import { Component, OnInit,EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-edit-post',
@@ -10,15 +8,21 @@ import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/t
   styleUrls: ['./edit.component.css']
 })
 export class EditComponent implements OnInit {
+@Output() textChanged = new EventEmitter();
 description : string='';
 image: string= '';
-file: any;
+file: any; 
+value: string='';
+
 
   constructor(private publicationService: PublicationService) { }
 
   ngOnInit(): void {
+    
   }
 
+ 
+ 
 onChangeFile(event:any): void {
    // @ts-ignore
       let files = Array.from(event.target.files);
@@ -44,5 +48,8 @@ onCreate():void {
   console.error(error))
 }
 
+propagateChanges(text: string) {
+    this.textChanged.emit(text);
+  }
 
 }

@@ -13,13 +13,10 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
- 
   posts : Array<any> = [];
- 
+  inputText: string = "";
 
-  constructor(private router:Router, public utilisateurService:UtilisateurService, public publicationService:PublicationService) { 
-  
-  }
+  constructor(private router:Router, public utilisateurService:UtilisateurService, public publicationService:PublicationService) {}
 
   ngOnInit(): void {
     
@@ -39,5 +36,7 @@ this.router.navigate(['login']);
 
   }
 
-  
+  setInputText(text: string) {
+    this.inputText = text;
+  }
 }

@@ -1,5 +1,5 @@
 <div class="container-top">
-    <textarea name="description" [(ngModel)]="description" placeholder='Publier un commentaire'></textarea>
+    <input type="text" name="description" [(ngModel)]="description" placeholder='Publier un commentaire' (keyup)="propagateChanges($event.target.value)" />
     <img class="image" [src]="image" *ngIf="image" />
     <div class="btn">
         <input (change)="onChangeFile($event)" type="file" class="custom-file-input">

@@ -5,7 +5,7 @@
     background: white;
 }
 
-textarea {
+input[type=text] {
     height: 200px;
     width: 100%;
     border: none;

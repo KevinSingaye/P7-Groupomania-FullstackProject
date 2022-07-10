@@ -20,8 +20,6 @@ export class PublicationService {
     return this.httpclient.get(this.path, {headers:header})
     
   }
-
-
   
   create(body:FormData):Observable<any> {
     let header = new HttpHeaders().set(
