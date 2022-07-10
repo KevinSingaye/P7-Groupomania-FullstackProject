@@ -80,6 +80,17 @@ label {
     align-items: center;
 }
 
+.postImage {
+    display: flex;
+    justify-content: center;
+}
+
+.postImage img {
+    width: 300px;
+    height: auto;
+    border: 2px solid black;
+}
+
 .comment {
     margin-top: 10px;
     margin-bottom: 20px;
@@ -92,15 +103,27 @@ label {
     padding: 15px 10px;
 }
 
-.btn {
+.likeDislike {
     display: flex;
+    justify-content: center;
+}
+
+.likeDislike i {
+    font-size: larger;
+    margin: 10px 10px 0 10px;
+    position: relative;
+    bottom: -25px;
 }
 
 #modifier-btn {
-    justify-content: right;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
-#supprimer-btn {}
+.btn {
+    display: flex;
+    justify-content: right;
+}
 
 textarea {
     height: 20px;

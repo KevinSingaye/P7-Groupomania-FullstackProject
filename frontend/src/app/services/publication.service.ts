@@ -33,7 +33,10 @@ export class PublicationService {
   }
 
   update(id:any,body:FormData):Observable<any> {
-    return this.httpclient.put(this.path + '/'+id, body)
+     let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+    return this.httpclient.put(this.path + '/'+id, body, {headers:header})
   
   }
 
