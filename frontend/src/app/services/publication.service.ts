@@ -39,7 +39,10 @@ export class PublicationService {
   }
 
   delete(id:any):Observable<any> {
-    return this.httpclient.delete(this.path + '/'+id)
+     let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+    return this.httpclient.delete(this.path + '/'+id, {headers:header})
   
   }
   

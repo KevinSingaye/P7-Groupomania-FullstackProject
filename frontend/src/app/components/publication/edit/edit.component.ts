@@ -48,7 +48,8 @@ onCreate():void {
   console.error(error))
 }
 
-propagateChanges(text: string) {
+propagateChanges(event:any) {
+let text = event.target.value
     this.textChanged.emit(text);
   }
 
