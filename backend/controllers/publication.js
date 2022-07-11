@@ -16,7 +16,7 @@ exports.createPublication = (req, res, next) => {
     });
 
     publication.save()
-        .then(() => res.status(201).json({ message: 'Publication enregistrée !' }))
+        .then(() => res.status(201).json(publication))
         .catch(error => res.status(400).json({ error }));
 };
 

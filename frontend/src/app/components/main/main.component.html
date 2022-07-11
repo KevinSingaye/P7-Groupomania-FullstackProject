@@ -15,28 +15,12 @@
 
     <app-header></app-header>
     <main>
-
         <div class="container">
-
-            <app-edit-post (textChanged)="setInputText($event)"></app-edit-post>
-
-
-
-
-
+            <app-edit-post (output)="onReceivePost($event)"></app-edit-post>
             <br>
-
-
             <p> Publications récentes</p>
-
             <app-display-post *ngFor="let post of posts" [post]="post"></app-display-post>
-
-
-
         </div>
-
-
-
     </main>
     <script src='main.component.js'>
         function menuToggle() {
