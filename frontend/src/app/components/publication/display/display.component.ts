@@ -1,5 +1,4 @@
 import { PublicationService } from './../../../services/publication.service';
-import { UtilisateurService } from './../../../services/utilisateur.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
@@ -19,7 +18,7 @@ imagePath : string='';
 image: string= '';
 file: any;
 
-  constructor(private utilisateurService:UtilisateurService, publicationService:PublicationService) { }
+  constructor(private publicationService:PublicationService) { }
 
   ngOnInit(): void {
       this.imagePath= sessionStorage.getItem('photo')??'';
@@ -29,11 +28,15 @@ file: any;
 
   onUpdate():void{
     console.log(this.post);
-    this.output.emit(this.post);
+    this.output.emit({action: 'UPDATE', data: this.post});
   }
 
-  onDelete(post:any):void {
-    console.log(this.post);
-    this.output.emit(this.post);
+ onDelete():void {
+      this.publicationService.delete(this.post._id).subscribe((result:any) => {
+      console.log(result)
+      this.output.emit({action: 'DELETE', data: this.post});
+    }, (error: any) =>
+      console.error(error))
+  
   }
 }

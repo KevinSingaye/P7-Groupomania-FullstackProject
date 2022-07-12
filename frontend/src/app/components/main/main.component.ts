@@ -34,7 +34,6 @@ export class MainComponent implements OnInit {
 
   }
 
-
   onReceivePost(data: any) {
   let action = data.action;
   let post = data.data;
@@ -48,10 +47,20 @@ export class MainComponent implements OnInit {
   }
   
   }
-  onUpdate(post:any):void{
-    this.currentPost = post;
-  }
- onDelete(post:any):void{
-  this.currentPost= '';
+  onUpdateOrDelete(data:any):void{
+     let action = data.action;
+  let post = data.data;
+  if(action=== 'DELETE'){
+let index = this.posts.findIndex((item)=> item._id === post._id);
+ if (index>-1){
+  this.posts.splice(index, 1)
  }
+  }
+    else{
+      this.currentPost = post;
+    }
+  
+   
+  }
+ 
 }

@@ -27,8 +27,18 @@
         <div class="btn">
 
             <button id="modifier-btn" (click)="onUpdate()"> Modifier</button>
-            <button id="supprimer-btn" (click)="onDelete(post)"> Supprimer</button>
+            <button id="supprimer-btn" (click)="onDelete()"> Supprimer</button>
+
         </div>
+    </div>
+    <div class="addCommentContainer">
+        <form>
+            <textarea style="overflow:hidden" placeholder='Ajouter un commentaire'></textarea>
+            <div class="addCommentBtn">
+                <input type="submit" value='Comment'>
+                <button id='AddCommentCancel' href='#'>Annuler</button>
+            </div>
+        </form>
     </div>
 
 

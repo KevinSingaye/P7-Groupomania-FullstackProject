@@ -64,18 +64,4 @@ export class EditComponent implements OnInit {
       this.onReset();
     }, (error: any) =>
       console.error(error))
-  } }
-  onDelete():void {
-     const body = new FormData();
-    body.append('texte', this.description);
-    body.append('userId', sessionStorage.getItem('userId') ?? '');
-    body.append('file', this.file);
-    if (this._id) {
-    this.publicationService.delete(body).subscribe((result:any) => {
-      console.log(result)
-      this.output.emit({action: 'DELETE', data: result});
-      this.onReset();
-    }, (error: any) =>
-      console.error(error))
-  }
-  }}
+  } }}
