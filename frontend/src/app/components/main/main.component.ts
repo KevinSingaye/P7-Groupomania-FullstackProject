@@ -34,7 +34,7 @@ export class MainComponent implements OnInit {
 
   }
 
-<<<<<<< HEAD
+
   onReceivePost(data: any) {
   let action = data.action;
   let post = data.data;
@@ -48,13 +48,10 @@ export class MainComponent implements OnInit {
   }
   
   }
-
   onUpdate(post:any):void{
-   
     this.currentPost = post;
-=======
-  onReceivePost(post: any) {
-    this.posts.unshift(post)
->>>>>>> 57949fa3b2cb5d97a45f32bd0a1da3545dae289c
   }
+ onDelete(post:any):void{
+  this.currentPost= '';
+ }
 }

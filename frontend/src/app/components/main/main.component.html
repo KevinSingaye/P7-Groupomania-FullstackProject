@@ -16,17 +16,17 @@
     <app-header></app-header>
     <main>
         <div class="container">
-<<<<<<< HEAD
+
             <app-edit-post (output)="onReceivePost($event)" [_id]="currentPost?._id" [description]="currentPost?.texte" [image]="currentPost?.imageUrl"></app-edit-post>
             <br>
             <p> Publications récentes</p>
             <app-display-post *ngFor="let post of posts" [post]="post" (output)="onUpdate($event)"></app-display-post>
-=======
-            <app-edit-post (output)="onReceivePost($event)"></app-edit-post>
+
+            <app-edit-post (output)="onReceivePost($event)" (output)="onDelete($event)"></app-edit-post>
             <br>
             <p> Publications récentes</p>
             <app-display-post *ngFor="let post of posts" [post]="post"></app-display-post>
->>>>>>> 57949fa3b2cb5d97a45f32bd0a1da3545dae289c
+
         </div>
     </main>
     <script src='main.component.js'>
