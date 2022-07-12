@@ -1,6 +1,6 @@
 
 import { UtilisateurService } from './../../../services/utilisateur.service';
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 
 
@@ -10,6 +10,7 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./display.component.css']
 })
 export class DisplayComponent implements OnInit {
+  @Output() output = new EventEmitter();
 @Input() post:any;
 imagePath : string='';
  nom: string= '';
@@ -26,4 +27,8 @@ file: any;
     this.email=sessionStorage.getItem('email')??'';
   }
 
+  onUpdate():void{
+    console.log(this.post);
+    this.output.emit(this.post);
+  }
 }

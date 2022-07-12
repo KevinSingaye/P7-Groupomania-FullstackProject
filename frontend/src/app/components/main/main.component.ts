@@ -1,11 +1,7 @@
-
 import { PublicationService } from './../../services/publication.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilisateurService } from 'src/app/services/utilisateur.service';
-
-
-
 
 @Component({
   selector: 'app-main',
@@ -13,30 +9,47 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  posts : Array<any> = [];
+  posts: Array<any> = [];
   inputText: string = "";
+  currentPost:any;
 
-  constructor(private router:Router, public utilisateurService:UtilisateurService, public publicationService:PublicationService) {}
+  constructor(private router: Router, public utilisateurService: UtilisateurService, public publicationService: PublicationService) { }
 
   ngOnInit(): void {
-    
-    
-    const userId= sessionStorage.getItem('userId');
+
+
+    const userId = sessionStorage.getItem('userId');
     if (!userId) {
-this.router.navigate(['login']);
+      this.router.navigate(['login']);
     }
 
-     this.publicationService.findAll().subscribe((result) => {
-     this.posts= result
-    }
-      , (error) => {
+    this.publicationService.findAll().subscribe(
+      (result: any) => {
+        this.posts = result
+      },
+      (error: any) => {
         console.log('error', error);
       }
-    ) 
+    )
 
   }
 
-  setInputText(text: string) {
-    this.inputText = text;
+  onReceivePost(data: any) {
+  let action = data.action;
+  let post = data.data;
+  if (action=== 'UPDATE') {
+ let index = this.posts.findIndex((item)=> item._id === this.currentPost._id);
+ if (index>-1){
+  this.posts[index]= post;
+ }
+  } else {
+ this.posts.unshift(post)
+  }
+  
+  }
+
+  onUpdate(post:any):void{
+   
+    this.currentPost = post;
   }
 }
