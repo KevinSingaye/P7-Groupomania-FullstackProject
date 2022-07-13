@@ -12,6 +12,7 @@ const app = express();
 
 const publicationRoutes = require('./routes/publication');
 const utilisateurRoutes = require('./routes/utilisateur');
+const commentaireRoutes = require('./routes/commentaire')
 const path = require('path');
 
 
@@ -44,6 +45,7 @@ app.use(mongoSanitize());
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use('/api/auth', utilisateurRoutes);
 app.use('/api/publications', publicationRoutes);
+app.use('/api/commentaires', commentaireRoutes);
 
 
 

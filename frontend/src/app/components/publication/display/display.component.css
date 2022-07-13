@@ -159,11 +159,6 @@ input[type="submit"] {
     background-color: #000000
 }
 
-#AddCommentCancel {
-    color: #333;
-    background-color: transparent
-}
-
 textarea {
     height: 20px;
     width: 100%;

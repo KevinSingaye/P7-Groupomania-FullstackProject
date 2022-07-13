@@ -64,4 +64,5 @@ export class EditComponent implements OnInit {
       this.onReset();
     }, (error: any) =>
       console.error(error))
-  } }}
+  } }
+}
