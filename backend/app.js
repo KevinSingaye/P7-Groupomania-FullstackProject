@@ -12,7 +12,7 @@ const app = express();
 
 const publicationRoutes = require('./routes/publication');
 const utilisateurRoutes = require('./routes/utilisateur');
-const commentaireRoutes = require('./routes/commentaire')
+const commentaireRoutes = require('./routes/commentaire');
 const path = require('path');
 
 

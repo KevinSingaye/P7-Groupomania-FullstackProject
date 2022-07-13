@@ -13,6 +13,7 @@ export class DisplayComponent implements OnInit {
   @Output() output = new EventEmitter();
   @Input() _id:string | undefined = undefined;
 @Input() post:any;
+@Input() commentaire:any;
 imagePath : string='';
  nom: string= '';
  email:string='';

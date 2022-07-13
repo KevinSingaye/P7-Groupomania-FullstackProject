@@ -11,11 +11,7 @@ export class CommentaireService {
   path = 'http://localhost:3000/api/commentaires' 
 
   constructor(private cookieService: CookieService, private httpclient:HttpClient ) {}
- findAll():Observable<any> {
-    let header = new HttpHeaders().set(
-      'Authorization', `Bearer ${this.cookieService.get('token')}`
-    );
-    return this.httpclient.get(this.path, {headers:header}) }
+
   create(body:FormData):Observable<any> {
     let header = new HttpHeaders().set(
       'Authorization', `Bearer ${this.cookieService.get('token')}`
@@ -24,6 +20,13 @@ export class CommentaireService {
       headers:header
     })
   }
+
+ findAll():Observable<any> {
+    let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+    return this.httpclient.get(this.path, {headers:header}) }
+
  delete(id:any):Observable<any> {
      let header = new HttpHeaders().set(
       'Authorization', `Bearer ${this.cookieService.get('token')}`
