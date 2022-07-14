@@ -33,6 +33,7 @@ file: any;
   onReset(): void {
     this._id = undefined;
     this.description = '';
+    this.texte= '';
   }
   onUpdate():void{
     console.log(this.post);
@@ -50,11 +51,10 @@ file: any;
 
   onCreate():void {
      const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
-     
 
-  this.commentaireService.create(body).subscribe((result: any) => {
+  this.commentaireService.create(body).subscribe((result:  string = this.texte) => {
       console.log(result)
-      this.output.emit({action: 'INSERT', data: result});
+      this.output.emit({action: 'INSERT', data: this.texte});
       this.onReset();
     }, (error: any) =>
       console.error(error))

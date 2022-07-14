@@ -44,9 +44,9 @@ export class MainComponent implements OnInit {
  }
   } else {
  this.posts.unshift(post)
-  }
+  }}
+
   
-  }
   onUpdateOrDelete(data:any):void{
      let action = data.action;
   let post = data.data;
