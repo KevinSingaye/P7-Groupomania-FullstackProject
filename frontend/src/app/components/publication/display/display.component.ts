@@ -18,8 +18,10 @@ imagePath : string='';
  nom: string= '';
  email:string='';
  description : string='';
+ texte: string='';
 image: string= '';
 file: any;
+
 
   constructor(private publicationService:PublicationService, private commentaireService:CommentaireService) { }
 
@@ -47,10 +49,10 @@ file: any;
   }
 
   onCreate():void {
-     const body = new FormData();
-      body.append('texte', this.description);
-      body.append('userId', sessionStorage.getItem('userId') ?? '');
-    this.commentaireService.create(body).subscribe((result: any) => {
+     const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
+     
+
+  this.commentaireService.create(body).subscribe((result: any) => {
       console.log(result)
       this.output.emit({action: 'INSERT', data: result});
       this.onReset();

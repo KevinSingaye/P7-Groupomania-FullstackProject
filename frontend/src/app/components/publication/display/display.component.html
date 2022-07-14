@@ -33,7 +33,7 @@
     </div>
     <div class="addCommentContainer">
         <form>
-            <textarea style="overflow:hidden" placeholder='Ajouter un commentaire'></textarea>
+            <textarea name="commentaire" [(ngModel)]="texte" style="overflow:hidden" placeholder='Ajouter un commentaire'></textarea>
             <div class="addCommentBtn">
                 <input type="submit" value='Comment' (click)="onCreate()">
 

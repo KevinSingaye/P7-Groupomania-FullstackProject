@@ -12,7 +12,7 @@ export class CommentaireService {
 
   constructor(private cookieService: CookieService, private httpclient:HttpClient ) {}
 
-  create(body:FormData):Observable<any> {
+  create(body:any):Observable<any> {
     let header = new HttpHeaders().set(
       'Authorization', `Bearer ${this.cookieService.get('token')}`
     );

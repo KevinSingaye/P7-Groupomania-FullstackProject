@@ -5,7 +5,8 @@ exports.createCommentaire = (req, res, next) => {
     console.log(req.body);
     const commentaire = new Commentaire({
         texte: req.body.texte,
-        userId: req.body.userId
+        userId: req.body.userId,
+        publicationId: req.body.publicationId
     });
     commentaire.save()
         .then(() => res.status(201).json(commentaire))
