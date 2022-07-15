@@ -18,9 +18,10 @@ imagePath : string='';
  nom: string= '';
  email:string='';
  description : string='';
- texte: string='';
+currentCommentaires:any;
 image: string= '';
 file: any;
+commentaires: any []=[];
 
 
   constructor(private publicationService:PublicationService, private commentaireService:CommentaireService) { }
@@ -29,11 +30,17 @@ file: any;
       this.imagePath= sessionStorage.getItem('photo')??'';
     this.nom= sessionStorage.getItem('nom')??'';
     this.email=sessionStorage.getItem('email')??'';
+    this.commentaireService.findAll(this.post._id).subscribe((results)=>{
+      this.commentaires= results;
+    },
+    (error)=>{
+      console.error(error)
+    })
   }
   onReset(): void {
     this._id = undefined;
     this.description = '';
-    this.texte= '';
+    
   }
   onUpdate():void{
     console.log(this.post);
@@ -48,16 +55,35 @@ file: any;
       console.error(error))
   
   }
+onReceiveComment(data: any) {
+ let action= data.action;
+  let comment = data.data;
+if (action=== 'UPDATE') {
+ let index = this.commentaires.findIndex((commentaire:any)=> commentaire._id === this.currentCommentaires._id);
+ if (index>-1){
+  this.commentaires[index]= comment;
+ }
 
-  onCreate():void {
-     const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
-
-  this.commentaireService.create(body).subscribe((result:  string = this.texte) => {
-      console.log(result)
-      this.output.emit({action: 'INSERT', data: this.texte});
-      this.onReset();
-    }, (error: any) =>
-      console.error(error))
+  }else {
+ this.commentaires.unshift(comment)
+  }
+}
+  
+  
+  onUpdateOrDelete(data:any):void{
+     let action = data.action;
+  let commentaire= data.data;
+  if(action=== 'DELETE'){
+let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
+ if (index>-1){
+  this.commentaires.splice(index, 1)
+ }
+  }
+    else{
+      this.currentCommentaires = commentaire;
+    }
+  
+   
   }
   
 }

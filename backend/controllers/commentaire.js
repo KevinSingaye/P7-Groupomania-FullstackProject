@@ -14,7 +14,7 @@ exports.createCommentaire = (req, res, next) => {
 }
 
 exports.getAllCommentaire = (req, res, next) => {
-    Commentaire.find().then(
+    Commentaire.find({ publicationId: req.params.post }).then(
         (commentaires) => {
             res.status(200).json(commentaires);
         }

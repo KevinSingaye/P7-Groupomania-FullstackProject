@@ -12,6 +12,8 @@ export class MainComponent implements OnInit {
   posts: Array<any> = [];
   inputText: string = "";
   currentPost:any;
+  currentComment:any;
+  comment:  any ;
 
   constructor(private router: Router, public utilisateurService: UtilisateurService, public publicationService: PublicationService) { }
 
@@ -45,6 +47,7 @@ export class MainComponent implements OnInit {
   } else {
  this.posts.unshift(post)
   }}
+
 
   
   onUpdateOrDelete(data:any):void{

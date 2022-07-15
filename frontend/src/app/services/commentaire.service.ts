@@ -21,11 +21,11 @@ export class CommentaireService {
     })
   }
 
- findAll():Observable<any> {
+ findAll(post:any):Observable<any> {
     let header = new HttpHeaders().set(
       'Authorization', `Bearer ${this.cookieService.get('token')}`
     );
-    return this.httpclient.get(this.path, {headers:header}) }
+    return this.httpclient.get(this.path + '/'+post, {headers:header}) }
 
  delete(id:any):Observable<any> {
      let header = new HttpHeaders().set(

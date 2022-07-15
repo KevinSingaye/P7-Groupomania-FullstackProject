@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { EditComponent } from './components/publication/edit/edit.component';
 import { HeaderComponent } from './components/header/header.component';
 import { DisplayComponent } from './components/publication/display/display.component';
+import { EditComponent as EditComponentCommentaire } from './components/commentaire/edit/edit.component';
+import { DisplayComponent as DisplayComponentCommentaire } from './components/commentaire/display/display.component';
+
 
 
 @NgModule({
@@ -22,7 +25,8 @@ import { DisplayComponent } from './components/publication/display/display.compo
     EditComponent,
     HeaderComponent,
     DisplayComponent,
-    
+    EditComponentCommentaire,
+    DisplayComponentCommentaire
   ],
   imports: [
     BrowserModule,

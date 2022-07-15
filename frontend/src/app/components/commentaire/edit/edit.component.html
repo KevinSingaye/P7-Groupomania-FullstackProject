@@ -1,0 +1,9 @@
+<div class="addCommentContainer">
+    <form>
+        <textarea name="commentaire" [(ngModel)]="texte" style="overflow:hidden" placeholder='Ajouter un commentaire'></textarea>
+        <div class="addCommentBtn">
+            <input type="submit" value='Comment' (click)="onCreate()">
+
+        </div>
+    </form>
+</div>
