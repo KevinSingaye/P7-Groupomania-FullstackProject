@@ -31,3 +31,15 @@ input[type="submit"] {
     color: #fff;
     background-color: #000000
 }
+
+@media only screen and (max-width: 320px) {
+    .addCommentContainer textarea {
+        width: max-content;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .addCommentContainer textarea {
+        width: max-content;
+    }
+}

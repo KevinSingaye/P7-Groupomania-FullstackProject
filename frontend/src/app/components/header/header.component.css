@@ -116,9 +116,3 @@ header .navigation {
         right: 20px;
     }
 }
-
-@media only screen and (max-width: 320px) {
-    .container {
-        width: auto;
-    }
-}

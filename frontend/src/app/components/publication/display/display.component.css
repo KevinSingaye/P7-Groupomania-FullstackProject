@@ -192,14 +192,51 @@ button {
     background-color: transparent
 }
 
+@media only screen and (max-width: 768px) {
+    .container-publications {
+        width: 90%;
+    }
+    textarea {
+        width: 90%;
+    }
+    .postImage img {
+        width: 200px;
+        height: auto;
+    }
+    .btn {
+        display: flex;
+        justify-content: left;
+    }
+    .reaction-container {
+        display: flex;
+        flex-direction: column;
+    }
+    .likeDislike {
+        justify-content: left;
+        position: relative;
+        top: -35px;
+        right: -15px;
+    }
+}
+
 @media only screen and (max-width: 320px) {
     .container-publications {
         width: 90%;
     }
-}
-
-@media only screen and (max-width: 7680px) {
-    .container-publications {
+    textarea {
         width: 90%;
+    }
+    .postImage img {
+        width: 100px;
+        height: auto;
+    }
+    .btn {
+        display: flex;
+        justify-content: left;
+        margin-bottom: 10px;
+    }
+    .reaction-container {
+        display: flex;
+        flex-direction: column;
     }
 }
