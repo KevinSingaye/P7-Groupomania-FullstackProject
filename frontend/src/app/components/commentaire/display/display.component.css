@@ -2,11 +2,27 @@ p {
     margin-left: 10px;
     margin-bottom: 15px;
     margin-top: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.commenter-container {
+    display: flex;
+    flex-direction: row;
 }
 
 .sectionCommentaire {
     display: flex;
     flex-direction: row;
+}
+
+.commenterImg img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: relative;
+    bottom: -15px;
+    margin-left: 10px;
 }
 
 .button {

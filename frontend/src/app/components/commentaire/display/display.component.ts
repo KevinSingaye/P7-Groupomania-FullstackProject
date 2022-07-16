@@ -10,12 +10,17 @@ export class DisplayComponent implements OnInit {
 @Output() output = new EventEmitter();
 @Input() _id:string | undefined = undefined;
 @Input() commentaire:any;
+imagePath : string='';
+@Input() comment:any;
+image: string= '';
+
 commentaires: any []=[]
   currentCommentaires: any;
 
   constructor(private commentaireService:CommentaireService) { }
 
   ngOnInit(): void {
+     this.imagePath= sessionStorage.getItem('photo')??'';
   }
 
 

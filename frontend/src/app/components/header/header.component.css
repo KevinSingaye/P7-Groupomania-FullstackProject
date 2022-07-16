@@ -36,7 +36,7 @@ header .navigation .profil {
 .profil .menu {
     position: absolute;
     top: 100px;
-    right: 190px;
+    right: 150px;
     padding-top: 10px;
     padding-bottom: 10px;
     padding-right: 30px;
@@ -107,4 +107,18 @@ header .logo {
 
 header .navigation {
     flex: 3;
+}
+
+@media only screen and (min-width: 768px) {
+    .profil .menu {
+        position: absolute;
+        top: 100px;
+        right: 20px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .container {
+        width: auto;
+    }
 }

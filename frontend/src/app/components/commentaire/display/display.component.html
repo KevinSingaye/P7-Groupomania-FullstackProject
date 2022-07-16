@@ -1,7 +1,11 @@
 <div class="sectionCommentaire">
+    <div class="commenter-container">
+        <div class="commenterImg">
+            <img [src]="imagePath" alt="Photo de commentateur" />
+        </div>
+        <p>{{commentaire.texte}}</p>
 
-    <p>{{commentaire.texte}}</p>
-
+    </div>
 
     <div class="button">
         <button (click)="onDelete()"> supprimer</button>
