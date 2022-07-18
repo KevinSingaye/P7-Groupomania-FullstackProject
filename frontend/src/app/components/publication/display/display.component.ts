@@ -21,6 +21,7 @@ imagePath : string='';
 currentCommentaires:any;
 image: string= '';
 file: any;
+ like!: number;
 commentaires: any []=[];
 
 
@@ -52,9 +53,9 @@ commentaires: any []=[];
       console.log(result)
       this.output.emit({action: 'DELETE', data: this.post});
     }, (error: any) =>
-      console.error(error))
-  
-  }
+      console.error(error)) }
+
+
 onReceiveComment(data: any) {
  let action= data.action;
   let comment = data.data;
@@ -82,8 +83,23 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
     else{
       this.currentCommentaires = commentaire;
     }
-  
-   
   }
+
+
+  Onlike():void {  
+    this.publicationService.likeOrNot(this._id, this.like).subscribe((result:any) => {  
+       this.like= 1;
+ console.log(result);
+ 
+    this.output.emit({action: 'UPDATE', data: result});
+  })
+  }
+
+  OnDislike():void {
+    this.publicationService.likeOrNot(this._id, this.like).subscribe((result:any) => {  
+       this.like= -1; 
+ console.log(result);
   
-}
+    this.output.emit({action: 'UPDATE', data: result});
+  })
+  }}

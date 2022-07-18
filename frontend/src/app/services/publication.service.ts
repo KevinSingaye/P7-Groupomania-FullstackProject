@@ -9,9 +9,11 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PublicationService {
+ 
    path = 'http://localhost:3000/api/publications'
 
   constructor(private httpclient:HttpClient, private cookieService: CookieService) { }
+
 
   findAll():Observable<any> {
     let header = new HttpHeaders().set(
@@ -43,7 +45,12 @@ export class PublicationService {
       'Authorization', `Bearer ${this.cookieService.get('token')}`
     );
     return this.httpclient.delete(this.path + '/'+id, {headers:header})
-  
   }
   
+  likeOrNot(id:any, like:number):Observable<any> {
+    let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+     return this.httpclient.post(this.path + '/'+id, like, {headers:header})
+  }
 }
