@@ -204,8 +204,17 @@ button {
         height: auto;
     }
     .btn {
-        display: flex;
         justify-content: left;
+    }
+    #modifier-btn {
+        margin-bottom: 25px;
+        position: relative;
+        left: -16px;
+    }
+    #supprimer-btn {
+        position: relative;
+        bottom: -40px;
+        left: -133px;
     }
     .reaction-container {
         display: flex;
@@ -215,7 +224,7 @@ button {
         justify-content: left;
         position: relative;
         top: -35px;
-        right: -15px;
+        right: 10px;
     }
 }
 
@@ -231,7 +240,6 @@ button {
         height: auto;
     }
     .btn {
-        display: flex;
         justify-content: left;
         margin-bottom: 10px;
     }
