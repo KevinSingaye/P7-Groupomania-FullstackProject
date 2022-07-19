@@ -22,6 +22,7 @@ currentCommentaires:any;
 image: string= '';
 file: any;
  like!: number;
+ userId:any;
 commentaires: any []=[];
 
 
@@ -87,8 +88,8 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
 
 
   Onlike():void {  
-    this.publicationService.likeOrNot(this._id, this.like).subscribe((result:any) => {  
-       this.like= 1;
+    this.publicationService.likeOrNot(this._id, this.like, this.userId).subscribe((result:any) => {  
+      this.like= 1;
  console.log(result);
  
     this.output.emit({action: 'UPDATE', data: result});
@@ -96,8 +97,8 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
   }
 
   OnDislike():void {
-    this.publicationService.likeOrNot(this._id, this.like).subscribe((result:any) => {  
-       this.like= -1; 
+    this.publicationService.likeOrNot(this._id, this.like, this.userId).subscribe((result:any) => {  
+      this.like= -1;
  console.log(result);
   
     this.output.emit({action: 'UPDATE', data: result});

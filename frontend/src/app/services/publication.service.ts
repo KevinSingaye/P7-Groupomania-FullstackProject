@@ -47,10 +47,11 @@ export class PublicationService {
     return this.httpclient.delete(this.path + '/'+id, {headers:header})
   }
   
-  likeOrNot(id:any, like:number):Observable<any> {
+  likeOrNot(id:any, userId:any, like:number):Observable<any> {
+   var body = { like, userId};
     let header = new HttpHeaders().set(
       'Authorization', `Bearer ${this.cookieService.get('token')}`
     );
-     return this.httpclient.post(this.path + '/'+id, like, {headers:header})
+     return this.httpclient.post(this.path + '/'+ id + '/like', body, {headers:header})
   }
 }
