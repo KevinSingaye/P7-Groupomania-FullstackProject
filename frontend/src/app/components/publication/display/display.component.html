@@ -21,8 +21,8 @@
 
     <div class="reaction-container">
         <div class="likeDislike">
-            <i (click)="Onlike()" class="uil uil-thumbs-up"></i>
-            <i (click)="OnDislike()" class="uil uil-thumbs-down"></i>
+            <i [ngClass]="{'userlike':userlike}" (click)="Onlike()" class="uil uil-thumbs-up"></i>
+            <i [ngClass]="{'userdislike':userdislike}" (click)="OnDislike()" class="uil uil-thumbs-down"></i>
         </div>
         <div class="btn">
 

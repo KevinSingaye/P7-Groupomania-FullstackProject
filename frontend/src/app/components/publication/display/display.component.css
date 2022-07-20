@@ -192,6 +192,14 @@ button {
     background-color: transparent
 }
 
+.userlike {
+    background: green;
+}
+
+.userdislike {
+    background: red;
+}
+
 @media only screen and (max-width: 768px) {
     .container-publications {
         width: 90%;

@@ -77,8 +77,9 @@ exports.getAllPublication = (req, res, next) => {
 exports.likeOrNot = (req, res, next) => {
     console.log(req.body);
     const like = JSON.parse(req.body.like);
-
+    console.log(like)
     if (like === 1) {
+
         Publication.updateOne({ _id: req.params.id }, { $inc: { likes: req.body.like++ }, $push: { usersLiked: req.body.userId } })
             .then((publication) => res.status(200).json({ message: 'Like ajouté !' }))
             .catch(error => res.status(400).json({ error }))

@@ -23,6 +23,9 @@ image: string= '';
 file: any;
  like!: number;
  userId:any;
+ userlike:boolean =false;
+ userdislike:boolean= false;
+
 commentaires: any []=[];
 
 
@@ -32,6 +35,9 @@ commentaires: any []=[];
       this.imagePath= sessionStorage.getItem('photo')??'';
     this.nom= sessionStorage.getItem('nom')??'';
     this.email=sessionStorage.getItem('email')??'';
+    this.userId= sessionStorage.getItem('userId')??'';
+    this.userlike=this.post.usersLiked.includes(this.userId);
+     this.userdislike=this.post.usersDisliked.includes(this.userId);
     this.commentaireService.findAll(this.post._id).subscribe((results)=>{
       this.commentaires= results;
     },
@@ -88,19 +94,47 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
 
 
   Onlike():void {  
-    this.publicationService.likeOrNot(this._id, this.like, this.userId).subscribe((result:any) => {  
-      this.like= 1;
- console.log(result);
- 
-    this.output.emit({action: 'UPDATE', data: result});
+    if (this.userdislike) {
+      return 
+    }
+    var like= this.userlike?0:1
+    this.publicationService.likeOrNot(this.post._id, like, this.userId).subscribe((result:any) => {  
+      if (this.userlike) {
+          this.post.likes-=1;
+          const index= this.post.usersLiked.findIndex((x:any)=> x===this.userId)
+          if (index>-1) {
+            this.post.usersLiked.splice(index,1)
+          }
+      } else {
+        this.post.likes +=1;
+        this.post.usersLiked.push(this.userId) 
+      } 
+      this.userlike=!this.userlike;
+  
+    console.log(result);
   })
   }
 
   OnDislike():void {
-    this.publicationService.likeOrNot(this._id, this.like, this.userId).subscribe((result:any) => {  
-      this.like= -1;
+    if (this.userlike) {
+      return
+    }
+    var like= this.userdislike?0:-1
+    this.publicationService.likeOrNot(this.post._id, like, this.userId).subscribe((result:any) => { 
+      if (this.userdislike) {
+          this.post.dislikes-=1;
+          const index= this.post.usersDisliked.findIndex((x:any)=> x===this.userId)
+          if (index>-1) {
+            this.post.usersDisliked.splice(index,1)
+          }
+      } else {
+        this.post.dislikes +=1;
+        this.post.usersDisliked.push(this.userId) 
+      } 
+      this.userdislike=!this.userdislike; 
+    
  console.log(result);
   
-    this.output.emit({action: 'UPDATE', data: result});
+    
   })
   }}
