@@ -14,7 +14,7 @@ imagePath : string='';
 @Input() comment:any;
 image: string= '';
 
-commentaires: any []=[]
+commentaires: any []=[];
   currentCommentaires: any;
 
   constructor(private commentaireService:CommentaireService) { }
@@ -23,30 +23,29 @@ commentaires: any []=[]
      this.imagePath= sessionStorage.getItem('photo')??'';
   }
 
+  onReset(): void {
+    this._id = '';
+    this.commentaire= '';
+    this.imagePath='';
+    this.image='';
+    this.commentaire._id= '';
+   
+
+    }
 
 onDelete():void {
       this.commentaireService.delete(this.commentaire._id).subscribe((result:any) => {
       console.log(result)
       this.output.emit({action: 'DELETE', data: this.commentaire});
+      this.onReset();
+
+  
     }, (error: any) =>
       console.error(error))
-  
-  }
+   }
 
-onUpdateOrDelete(data:any):void{
-     let action = data.action;
-  let commentaire= data.data;
-  if(action=== 'DELETE'){
-let index = this.commentaires.findIndex((commentaire)=> commentaire._id === commentaire._id);
- if (index>-1){
-  this.commentaires.splice(index, 1)
- }
-  }
-    else{
-      this.currentCommentaires = commentaire;
-    }
   
-   
-  }
+    
+ 
 
-}
+  }

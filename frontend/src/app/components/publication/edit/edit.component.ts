@@ -44,25 +44,28 @@ export class EditComponent implements OnInit {
     };
   }
 
-  onCreate(): void {
+ onCreate(): void {
     const body = new FormData();
     body.append('texte', this.description);
     body.append('userId', sessionStorage.getItem('userId') ?? '');
     body.append('file', this.file);
-    if (this._id){
- this.publicationService.update(this._id, body).subscribe((result: any) => {
-      console.log(result)
-      this.output.emit({action: 'UPDATE', data: result});
-      this.onReset();
- }, (error:any) =>
- console.error(error))
-    } 
-    else {
-    this.publicationService.create(body).subscribe((result: any) => {
-      console.log(result)
-      this.output.emit({action: 'INSERT', data: result});
-      this.onReset();
-    }, (error: any) =>
-      console.error(error))
-  } }
+    if (this._id) {
+      if(!this.file){
+        body.append('imageUrl', this.image);
+      }
+      this.publicationService.update(this._id,
+body).subscribe((result: any) => {
+        console.log(result)
+        this.output.emit({action: 'UPDATE', data: result});
+        this.onReset();
+      }, (error: any) =>
+        console.error(error))
+    } else {
+      this.publicationService.create(body).subscribe((result: any) => {
+        console.log(result)
+        this.output.emit({action: 'INSERT', data: result});
+        this.onReset();
+      }, (error: any) =>
+        console.error(error))
+      } }
 }

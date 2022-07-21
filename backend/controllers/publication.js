@@ -37,10 +37,12 @@ exports.getOnePublication = (req, res, next) => {
 };
 
 exports.modifyPublication = (req, res, next) => {
-    const publicationObject = req.file ? {
-        ...JSON.parse(req.body.publication),
-        imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+    let file = req.files ? req.files[0] : undefined;
+    const publicationObject = file ? {
+        ...req.body,
+        imageUrl: `${req.protocol}://${req.get('host')}/images/${file.filename}`
     } : {...req.body };
+    console.log(publicationObject)
     Publication.updateOne({ _id: req.params.id }, {...publicationObject, _id: req.params.id })
         .then(() => res.status(200).json(publicationObject))
         .catch(error => res.status(400).json({ error }));
