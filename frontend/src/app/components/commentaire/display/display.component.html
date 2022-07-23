@@ -7,8 +7,9 @@
 
     </div>
 
-    <div class="button">
+    <div class="button" *ngIf="displayButton">
         <button (click)="onDelete()"> supprimer</button>
+
     </div>
 
 </div>

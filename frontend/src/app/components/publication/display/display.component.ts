@@ -1,7 +1,7 @@
 import { CommentaireService } from './../../../services/commentaire.service';
 import { PublicationService } from './../../../services/publication.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { UtilisateurService } from 'src/app/services/utilisateur.service';
 
 
 @Component({
@@ -25,17 +25,15 @@ file: any;
  userId:any;
  userlike:boolean =false;
  userdislike:boolean= false;
+ displayButton: boolean= false;
 
 commentaires: any []=[];
 
 
-  constructor(private publicationService:PublicationService, private commentaireService:CommentaireService) { }
+  constructor(private publicationService:PublicationService, private commentaireService:CommentaireService, private utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {
-      this.imagePath= sessionStorage.getItem('photo')??'';
-    this.nom= sessionStorage.getItem('nom')??'';
-    this.email=sessionStorage.getItem('email')??'';
-    this.userId= sessionStorage.getItem('userId')??'';
+     this.userId= sessionStorage.getItem('userId')??'';
     this.userlike=this.post.usersLiked.includes(this.userId);
      this.userdislike=this.post.usersDisliked.includes(this.userId);
     this.commentaireService.findAll(this.post._id).subscribe((results)=>{
@@ -44,6 +42,18 @@ commentaires: any []=[];
     (error)=>{
       console.error(error)
     })
+   var moderateur = sessionStorage.getItem('moderateur')??'false';
+   console.log('post', this.post);
+    
+    this.utilisateurService.findOne(this.post.userId).subscribe((results)=>{
+ this.imagePath= results.photo;
+    this.nom= results.nom;
+    this.email= results.email;
+    console.log('results', results)
+    },(error)=>{ 
+      console.error(error)
+    })
+this.displayButton= this.post.userId===this.userId || JSON.parse(moderateur);
   }
   onReset(): void {
     this._id = undefined;

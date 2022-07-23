@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { LoginComponent } from '../components/login/login.component';
 import { Router } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +23,14 @@ export class UtilisateurService {
   register(body: FormData): Observable<any> {
     return this.http.post(this.path + '/signup', body);
 
+  }
 
+  findOne(id:any):Observable<any> {
+    let header = new HttpHeaders().set(
+      'Authorization', `Bearer ${this.cookieService.get('token')}`
+    );
+    return this.http.get(this.path +'/'+ id, {headers:header})
+    
   }
   
 logoutUser() {
