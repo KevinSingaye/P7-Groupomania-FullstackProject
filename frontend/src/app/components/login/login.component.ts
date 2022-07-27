@@ -17,19 +17,18 @@ export class LoginComponent implements OnInit {
 
   constructor(private service: UtilisateurService, private cookie: CookieService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
   onLogin(): void {
     this.service.login(this.identifiant, this.motDePasse).subscribe((result) => {
-      sessionStorage.setItem('userId', result.userId)
-      sessionStorage.setItem('nom', result.nom)
-      sessionStorage.setItem('email',result.email)
-      sessionStorage.setItem('moderateur', result.moderateur)
+     sessionStorage.setItem('userId', result.userId)
+     sessionStorage.setItem('nom', result.nom)
+     sessionStorage.setItem('email',result.email)
+     sessionStorage.setItem('moderateur', result.moderateur)
       
-      sessionStorage.setItem('photo', result.photo)
+     sessionStorage.setItem('photo', result.photo)
       this.cookie.set('token', result.token)
       this.router.navigate([''])
-
     }
       , (error) => {
         console.log('error', error);

@@ -23,14 +23,14 @@ export class EditComponent implements OnInit {
     this.texte='';
     
   }
-onCreate():void {
+  onCreate():void {
   console.log(this.post);
-     const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
+  const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
 
   this.commentaireService.create(body).subscribe((result: any) => {
-      console.log(result)
-      this.output.emit({action: 'INSERT', data: result});
-      this.onReset();
+   console.log(result)
+   this.output.emit({action: 'INSERT', data: result});
+   this.onReset();
     }, (error: any) =>
       console.error(error))
   }

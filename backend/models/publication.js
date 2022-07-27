@@ -9,6 +9,8 @@ const publicationSchema = mongoose.Schema({
     dislikes: { type: Number, default: 0 },
     usersLiked: { type: [String] },
     usersDisliked: { type: [String] },
+    dateSaved: { type: Date, default: new Date() }
+
 });
 
 module.exports = mongoose.model('Publication', publicationSchema);

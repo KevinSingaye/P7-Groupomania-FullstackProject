@@ -37,28 +37,29 @@ export class MainComponent implements OnInit {
   }
 
   onReceivePost(data: any) {
-  let action = data.action;
-  let post = data.data;
-  if (action=== 'UPDATE') {
- let index = this.posts.findIndex((item)=> item._id === this.currentPost._id);
- if (index>-1){
-  this.posts[index]= post;
- }
-  } else {
- this.posts.unshift(post)
-  }}
+    let action = data.action;
+    let post = data.data;
+    if (action=== 'UPDATE'){
+      let index = this.posts.findIndex((item)=> item._id === this.currentPost._id);
+      if (index>-1){
+        this.posts[index]= post;
+      }
+    } else {
+      this.posts.unshift(post)
+    }
+  }
 
 
   
   onUpdateOrDelete(data:any):void{
-     let action = data.action;
-  let post = data.data;
-  if(action=== 'DELETE'){
-let index = this.posts.findIndex((item)=> item._id === post._id);
- if (index>-1){
-  this.posts.splice(index, 1)
- }
-  }
+   let action = data.action;
+   let post = data.data;
+   if(action=== 'DELETE'){
+   let index = this.posts.findIndex((item)=> item._id === post._id);
+    if (index>-1){
+    this.posts.splice(index, 1)
+    }
+   }
     else{
       this.currentPost = post;
     }

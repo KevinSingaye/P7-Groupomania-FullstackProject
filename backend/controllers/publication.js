@@ -62,7 +62,7 @@ exports.deletePublication = (req, res, next) => {
 };
 
 exports.getAllPublication = (req, res, next) => {
-    Publication.find().then(
+    Publication.find().sort({ "dateSaved": -1 }).then(
         (publications) => {
             res.status(200).json(publications);
         }
@@ -73,6 +73,7 @@ exports.getAllPublication = (req, res, next) => {
             });
         }
     );
+
 };
 
 // Aimer ou pas une sauce

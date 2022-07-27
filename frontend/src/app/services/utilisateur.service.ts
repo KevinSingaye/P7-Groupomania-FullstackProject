@@ -33,7 +33,7 @@ export class UtilisateurService {
     
   }
   
-logoutUser() {
+  logoutUser() {
   sessionStorage.clear()
   this.router.navigate(['/login'])
   this.cookieService.set('token','')

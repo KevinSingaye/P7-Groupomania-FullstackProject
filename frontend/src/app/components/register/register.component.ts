@@ -6,7 +6,7 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
-})
+ })
 export class RegisterComponent implements OnInit {
 
   nomsPrenoms: string= '';
@@ -17,11 +17,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private service: UtilisateurService, private cookie: CookieService, private router: Router) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onChoicePhoto(): void {
- let input = document.createElement('input') as HTMLInputElement;
+    let input = document.createElement('input') as HTMLInputElement;
     input.type = 'file';
     input.onchange = (_) => {
       // @ts-ignore
@@ -33,7 +32,7 @@ export class RegisterComponent implements OnInit {
       reader.readAsDataURL(this.photo);
       reader.onload = () => {
         this.imagePath = reader.result?.toString()??'';
-      };
+        };
     };
 
     input.click();
@@ -50,14 +49,12 @@ export class RegisterComponent implements OnInit {
     body.append('file', this.photo);
     body.append('moderateur', 'false');
 
-    this.service.register(body).subscribe((result) => {
+    this.service.register(body).subscribe((result) =>{ 
       this.router.navigate(['login'])
-
-    }
+      }
       , (error) => {
         console.log('error', error);
-      }
-    )
+    })
   }
 
 }

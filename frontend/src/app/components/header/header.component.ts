@@ -7,9 +7,9 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-imagePath : string='';
- nom: string= '';
- email:string='';
+  imagePath : string='';
+  nom: string= '';
+  email:string='';
   constructor(public utilisateurService:UtilisateurService) { }
 
   ngOnInit(): void {

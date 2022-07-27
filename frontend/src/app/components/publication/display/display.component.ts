@@ -12,22 +12,22 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 export class DisplayComponent implements OnInit {
   @Output() output = new EventEmitter();
   @Input() _id:string | undefined = undefined;
-@Input() post:any;
-@Input() commentaire:any;
-imagePath : string='';
- nom: string= '';
- email:string='';
- description : string='';
-currentCommentaires:any;
-image: string= '';
-file: any;
- like!: number;
- userId:any;
- userlike:boolean =false;
- userdislike:boolean= false;
- displayButton: boolean= false;
+  @Input() post:any;
+  @Input() commentaire:any;
+  imagePath : string='';
+  nom: string= '';
+  email:string='';
+  description : string='';
+  currentCommentaires:any;
+  image: string= '';
+  file: any;
+  like!: number;
+  userId:any;
+  userlike:boolean =false;
+  userdislike:boolean= false;
+  displayButton: boolean= false;
 
-commentaires: any []=[];
+  commentaires: any []=[];
 
 
   constructor(private publicationService:PublicationService, private commentaireService:CommentaireService, private utilisateurService:UtilisateurService) { }
@@ -46,14 +46,14 @@ commentaires: any []=[];
    console.log('post', this.post);
     
     this.utilisateurService.findOne(this.post.userId).subscribe((results)=>{
- this.imagePath= results.photo;
+    this.imagePath= results.photo;
     this.nom= results.nom;
     this.email= results.email;
     console.log('results', results)
     },(error)=>{ 
       console.error(error)
     })
-this.displayButton= this.post.userId===this.userId || JSON.parse(moderateur);
+    this.displayButton= this.post.userId===this.userId || JSON.parse(moderateur);
   }
   onReset(): void {
     this._id = undefined;
@@ -63,39 +63,40 @@ this.displayButton= this.post.userId===this.userId || JSON.parse(moderateur);
   onUpdate():void{
     console.log(this.post);
     this.output.emit({action: 'UPDATE', data: this.post});
+    this.userId.imagePath;
   }
 
  onDelete():void {
-      this.publicationService.delete(this.post._id).subscribe((result:any) => {
-      console.log(result)
-      this.output.emit({action: 'DELETE', data: this.post});
-    }, (error: any) =>
-      console.error(error)) }
+   this.publicationService.delete(this.post._id).subscribe((result:any) => {
+   console.log(result)
+   this.output.emit({action: 'DELETE', data: this.post});
+   }, (error: any) =>
+    console.error(error))
+  }
 
 
-onReceiveComment(data: any) {
- let action= data.action;
+  onReceiveComment(data: any) {
+  let action= data.action;
   let comment = data.data;
-if (action=== 'UPDATE') {
- let index = this.commentaires.findIndex((commentaire:any)=> commentaire._id === this.currentCommentaires._id);
- if (index>-1){
-  this.commentaires[index]= comment;
- }
-
+  if (action=== 'UPDATE') {
+    let index = this.commentaires.findIndex((commentaire:any)=> commentaire._id === this.currentCommentaires._id);
+    if (index>-1){
+    this.commentaires[index]= comment;
+    }
   }else {
- this.commentaires.unshift(comment)
+  this.commentaires.unshift(comment)
   }
 }
   
   
   onUpdateOrDelete(data:any):void{
-     let action = data.action;
+   let action = data.action;
   let commentaire= data.data;
   if(action=== 'DELETE'){
-let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
- if (index>-1){
+  let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
+  if (index>-1){
   this.commentaires.splice(index, 1)
- }
+  }
   }
     else{
       this.currentCommentaires = commentaire;
@@ -122,7 +123,7 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
       this.userlike=!this.userlike;
   
     console.log(result);
-  })
+    })
   }
 
   OnDislike():void {
@@ -131,20 +132,18 @@ let index = this.commentaires.findIndex((item)=> item._id === commentaire._id);
     }
     var like= this.userdislike?0:-1
     this.publicationService.likeOrNot(this.post._id, like, this.userId).subscribe((result:any) => { 
-      if (this.userdislike) {
-          this.post.dislikes-=1;
-          const index= this.post.usersDisliked.findIndex((x:any)=> x===this.userId)
-          if (index>-1) {
-            this.post.usersDisliked.splice(index,1)
-          }
+    if (this.userdislike) {
+     this.post.dislikes-=1;
+     const index= this.post.usersDisliked.findIndex((x:any)=> x===this.userId)
+      if (index>-1) {
+       this.post.usersDisliked.splice(index,1)
+      }
       } else {
         this.post.dislikes +=1;
         this.post.usersDisliked.push(this.userId) 
       } 
       this.userdislike=!this.userdislike; 
-    
- console.log(result);
-  
-    
-  })
-  }}
+      console.log(result);
+    })
+  }
+}
