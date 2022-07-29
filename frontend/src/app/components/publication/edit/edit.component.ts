@@ -27,7 +27,6 @@ export class EditComponent implements OnInit {
   }
 
 
-
   onChangeFile(event: any): void {
     // @ts-ignore
     let files = Array.from(event.target.files);
@@ -39,6 +38,7 @@ export class EditComponent implements OnInit {
     reader.onload = () => {
       this.image = reader.result?.toString() ?? '';
     };
+    this.onReset();
   }
 
  onCreate(): void { 

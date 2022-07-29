@@ -12,6 +12,7 @@ export class EditComponent implements OnInit {
   @Input() texte: string='';
   @Output() output: any= new EventEmitter();
   @Input() post: any;
+   @Input() image: string = '';
 
   constructor(private commentaireService: CommentaireService) { }
 
@@ -20,8 +21,7 @@ export class EditComponent implements OnInit {
   }
 
   onReset(){
-    this.texte='';
-    
+    this.texte=''; 
   }
   onCreate():void {
   console.log(this.post);

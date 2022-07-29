@@ -18,6 +18,8 @@ export class DisplayComponent implements OnInit {
   userId : string='';
   nom : string= '';
   email: string= '';
+   
+  
 
 
   commentaires: any []=[];
@@ -49,6 +51,7 @@ export class DisplayComponent implements OnInit {
     }
 
   onUpdate():void{
+   
     console.log(this.commentaire);
     this.output.emit({action: 'UPDATE', data: this.commentaire});
   }

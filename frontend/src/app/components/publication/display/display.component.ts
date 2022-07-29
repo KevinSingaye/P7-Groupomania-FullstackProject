@@ -62,8 +62,9 @@ export class DisplayComponent implements OnInit {
   }
   onUpdate():void{
     console.log(this.post);
+    
     this.output.emit({action: 'UPDATE', data: this.post});
-    this.userId.imagePath;
+   
   }
 
  onDelete():void {
