@@ -1,15 +1,23 @@
 <div class="sectionCommentaire">
     <div class="commenter-container">
+
+
         <div class="commenterImg">
             <img [src]="imagePath" alt="Photo de commentateur" />
         </div>
-        <p>{{commentaire.texte}}</p>
+
+        <div class="commenterName">
+            <p> {{nom}}</p>
+            <p class="commentaire">{{commentaire.texte}}</p>
+        </div>
+
+
+
+
+
+        <div class="button" *ngIf="displayButton">
+            <button (click)="onDelete()"> supprimer</button>
+
+        </div>
 
     </div>
-
-    <div class="button" *ngIf="displayButton">
-        <button (click)="onDelete()"> supprimer</button>
-
-    </div>
-
-</div>

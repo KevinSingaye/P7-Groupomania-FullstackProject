@@ -1,8 +1,10 @@
 <div class="container-top">
-    <input type="text" name="description" [(ngModel)]="description" placeholder='Publier un commentaire' />
-    <img class="image" [src]="image" *ngIf="image" />
-    <div class="btn">
-        <input (change)="onChangeFile($event)" type="file" class="custom-file-input">
-        <input id="inputComment" type="submit" value='Publier' (click)="onCreate()">
-    </div>
+    <form>
+        <input type="text" name="description" [(ngModel)]="description" placeholder='Publier un commentaire' />
+        <img class="image" [src]="image" *ngIf="image" />
+        <div class="btn">
+            <input (change)="onChangeFile($event)" type="file" class="custom-file-input">
+            <input id="inputComment" type="submit" value='Publier' (click)="onCreate()">
+        </div>
+    </form>
 </div>

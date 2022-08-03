@@ -8,7 +8,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 })
 export class EditComponent implements OnInit {
   @Output() output = new EventEmitter();
-  @Input() _id:string | undefined = undefined;
+  @Input() _id: string | undefined = undefined;
   @Input() description: string = '';
   @Input() image: string = '';
   file: any;
@@ -17,7 +17,7 @@ export class EditComponent implements OnInit {
 
   constructor(private publicationService: PublicationService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   onReset(): void {
     this._id = undefined;
@@ -38,33 +38,32 @@ export class EditComponent implements OnInit {
     reader.onload = () => {
       this.image = reader.result?.toString() ?? '';
     };
-    this.onReset();
   }
 
- onCreate(): void { 
+  onCreate(): void {
+    console.log(this.description)
     const body = new FormData();
     body.append('texte', this.description);
     body.append('userId', sessionStorage.getItem('userId') ?? '');
     body.append('file', this.file);
-    if (this._id) {''
-      if(!this.file){
+    if (this._id) {
+      if (!this.file) {
         body.append('imageUrl', this.image);
       }
-      this.publicationService.update(this._id,body).subscribe((result: any) => 
-      {
-       console.log(result)
-       this.output.emit({action: 'UPDATE', data: result});
-       this.onReset();
+      this.publicationService.update(this._id, body).subscribe((result: any) => {
+        console.log(result)
+        this.output.emit({ action: 'UPDATE', data: result });
+        this.onReset();
       }, (error: any) =>
-      console.error(error))
-    } 
-      else{
-         this.publicationService.create(body).subscribe((result: any) => {
-         console.log(result)
-         this.output.emit({action: 'INSERT', data: result});
-         this.onReset();
-         }, (error: any) =>
-        console.error(error)) 
-       } 
+        console.error(error))
+    }
+    else {
+      this.publicationService.create(body).subscribe((result: any) => {
+        console.log(result)
+        this.output.emit({ action: 'INSERT', data: result });
+        this.onReset();
+      }, (error: any) =>
+        console.error(error))
+    }
   }
 }

@@ -1,3 +1,7 @@
+    * {
+        font-family: 'Lato', sans-serif;
+    }
+    
     header {
         display: flex;
         flex-direction: row;
@@ -25,6 +29,7 @@
     header .navigation .profil .nom {
         display: flex;
         flex-direction: column;
+        margin-left: 5px;
     }
     
     header .navigation .profil {

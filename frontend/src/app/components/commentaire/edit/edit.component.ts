@@ -9,10 +9,10 @@ import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class EditComponent implements OnInit {
 
-  @Input() texte: string='';
-  @Output() output: any= new EventEmitter();
+  @Input() texte: string = '';
+  @Output() output: any = new EventEmitter();
   @Input() post: any;
-   @Input() image: string = '';
+  @Input() image: string = '';
 
   constructor(private commentaireService: CommentaireService) { }
 
@@ -20,17 +20,17 @@ export class EditComponent implements OnInit {
     console.log(this.post);
   }
 
-  onReset(){
-    this.texte=''; 
+  onReset() {
+    this.texte = '';
   }
-  onCreate():void {
-  console.log(this.post);
-  const body = {texte:this.texte, userId:sessionStorage.getItem('userId')??"", publicationId:this.post._id}
+  onCreate(): void {
+    console.log(this.texte)
+    const body = { texte: this.texte, userId: sessionStorage.getItem('userId') ?? "", publicationId: this.post._id }
 
-  this.commentaireService.create(body).subscribe((result: any) => {
-   console.log(result)
-   this.output.emit({action: 'INSERT', data: result});
-   this.onReset();
+    this.commentaireService.create(body).subscribe((result: any) => {
+      console.log(result)
+      this.output.emit({ action: 'INSERT', data: result });
+      this.onReset();
     }, (error: any) =>
       console.error(error))
   }

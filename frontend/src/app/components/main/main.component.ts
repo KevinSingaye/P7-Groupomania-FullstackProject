@@ -11,9 +11,9 @@ import { UtilisateurService } from 'src/app/services/utilisateur.service';
 export class MainComponent implements OnInit {
   posts: Array<any> = [];
   inputText: string = "";
-  currentPost:any;
-  currentComment:any;
-  comment:  any ;
+  currentPost: any;
+  currentComment: any;
+  comment: any;
 
   constructor(private router: Router, public utilisateurService: UtilisateurService, public publicationService: PublicationService) { }
 
@@ -39,10 +39,10 @@ export class MainComponent implements OnInit {
   onReceivePost(data: any) {
     let action = data.action;
     let post = data.data;
-    if (action=== 'UPDATE'){
-      let index = this.posts.findIndex((item)=> item._id === this.currentPost._id);
-      if (index>-1){
-        this.posts[index]= post;
+    if (action === 'UPDATE') {
+      let index = this.posts.findIndex((item) => item._id === this.currentPost._id);
+      if (index > -1) {
+        this.posts[index] = { ...this.posts[index], imageUrl: post.imageUrl, texte: post.texte };
       }
     } else {
       this.posts.unshift(post)
@@ -50,21 +50,21 @@ export class MainComponent implements OnInit {
   }
 
 
-  
-  onUpdateOrDelete(data:any):void{
-   let action = data.action;
-   let post = data.data;
-   if(action=== 'DELETE'){
-   let index = this.posts.findIndex((item)=> item._id === post._id);
-    if (index>-1){
-    this.posts.splice(index, 1)
+
+  onUpdateOrDelete(data: any): void {
+    let action = data.action;
+    let post = data.data;
+    if (action === 'DELETE') {
+      let index = this.posts.findIndex((item) => item._id === post._id);
+      if (index > -1) {
+        this.posts.splice(index, 1)
+      }
     }
-   }
-    else{
+    else {
       this.currentPost = post;
     }
-  
-   
+
+
   }
- 
+
 }

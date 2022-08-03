@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 * {
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
 }
 
 body {
     margin: 0;
-    font-family: poppins, Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 400;
     color: #666666;
@@ -90,7 +90,7 @@ body {
 
 .login .login-text .btn {
     display: inline-block;
-    font-family: poppins;
+    font-family: 'Lato', sans-serif;
     padding: 7px 20px;
     font-size: 16px;
     letter-spacing: 1px;
