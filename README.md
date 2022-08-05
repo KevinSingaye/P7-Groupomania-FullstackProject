@@ -2,23 +2,23 @@
 
 GROUPOMANIA SOCIAL NETWORK
 
-Dossier Backend
+****** Dossier Backend *******
 
 Ce dossier contient la partie serveur de notre application.
-Telechargez et ouvrez Node.js.
-Tapez la commande suivante: npm install
-puis la commande suivante : npm start
-
-Puis lancez le serveur en tapant la commande : nodemon server.
+Ouvrez votre terminal.
+Tapez : cd backend
+Puis la commande suivante: npm install
+Et enfin lancez le serveur avec la commande: nodemon server.
 Le serveur doit fonctionner sur http://localhost:3000/
 
-Dossier Frontend
-Comme son nom l'indique, ce dossier contient la partie site de notre application.
+***** Dossier Frontend ****
 
-Telechargez et ouvrez Node.js.
-Tapez la commande suivante : npm install
-Tapez la commande suivante : npm start.
-Puis lancez le serveur en tapant la commande : npm run serve.
+Comme son nom l'indique, ce dossier contient la partie site de notre application.
+Ouvrez votre terminal 
+Tapez: cd frontend (Angular doit être installé au préalable dans votre machine)
+Puis la commande suivante : npm install
+Et enfin lancer le serveur avec la commande : ng serve
+
 Le serveur doit fonctionner sur http://localhost:4200/.
 
 
