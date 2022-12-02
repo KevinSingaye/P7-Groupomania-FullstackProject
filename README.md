@@ -5,6 +5,10 @@ GROUPOMANIA SOCIAL NETWORK
 ![1653474647318_icon-left-font](https://user-images.githubusercontent.com/75949789/205307438-add9832d-06c7-4e15-9914-9b8902facdd4.png)
 
 
+Le projet consiste à construire un réseau social interne pour les employés de Groupomania. Le
+but de cet outil est de faciliter les interactions entre collègues. Le département RH de
+Groupomania a imaginé plusieurs fonctionnalités pour favoriser les échanges entre collègues
+
 ****** Dossier Backend *******
 
 Ce dossier contient la partie serveur de notre application.
