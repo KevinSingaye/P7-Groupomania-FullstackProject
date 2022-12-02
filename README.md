@@ -2,6 +2,9 @@
 
 GROUPOMANIA SOCIAL NETWORK
 
+![1653474647318_icon-left-font](https://user-images.githubusercontent.com/75949789/205307438-add9832d-06c7-4e15-9914-9b8902facdd4.png)
+
+
 ****** Dossier Backend *******
 
 Ce dossier contient la partie serveur de notre application.
