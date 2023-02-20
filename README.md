@@ -30,3 +30,21 @@ Le serveur doit fonctionner sur http://localhost:4200/.
 
 
 Enjoy.
+
+=====
+
+/ English /
+
+The project consists of building an internal social network for Groupomania employees. The purpose of this tool is to facilitate interactions between colleagues. Groupomania's HR department has devised several features to promote exchanges between colleagues
+
+****** Backend Folder *******
+
+This folder contains the server part of our application. Open your terminal. Type: cd backend Then the following command: npm install And finally launch the server with the command: nodemon server. Server should be running on http://localhost:3000/
+
+*****Frontend Folder****
+
+As the name suggests, this folder contains the site part of our application. Open your terminal Type: cd frontend (Angular must be installed on your machine beforehand) Then the following command: npm install And finally launch the server with the command: ng serve
+
+The server should be running on http://localhost:4200/.
+
+Enjoy.
